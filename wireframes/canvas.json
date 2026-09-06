@@ -1,0 +1,216 @@
+{
+  "pages": [
+    {
+      "id": "audience",
+      "name": "Audience"
+    },
+    {
+      "id": "curator",
+      "name": "Curator"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Main · the cover",
+      "page": "audience",
+      "x": 0,
+      "y": -850,
+      "w": 900,
+      "h": 730
+    },
+    {
+      "file": "Onboarding.dc.html",
+      "title": "1E · Onboarding",
+      "page": "audience",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Marquee.dc.html",
+      "title": "1F · Marquee",
+      "page": "audience",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "SessionDetail.dc.html",
+      "title": "1G · Session detail",
+      "page": "audience",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Doors.dc.html",
+      "title": "1D① · Doors",
+      "page": "audience",
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Leader.dc.html",
+      "title": "1D③ · Leader",
+      "page": "audience",
+      "x": 1880,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "FallingBehind.dc.html",
+      "title": "1D⑨ · Falling behind",
+      "page": "audience",
+      "x": 2350,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "TheRoom.dc.html",
+      "title": "1A · TheRoom",
+      "page": "audience",
+      "x": 0,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "RoomNotes.dc.html",
+      "title": "1B · TheRoom, notes",
+      "page": "audience",
+      "x": 470,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "RoomQuiet.dc.html",
+      "title": "1C · TheRoom, quiet",
+      "page": "audience",
+      "x": 940,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "FrameOpen.dc.html",
+      "title": "1A · TheRoom, frame open",
+      "page": "audience",
+      "x": 1410,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "LightsUp.dc.html",
+      "title": "1D⑩ · Lights up",
+      "page": "audience",
+      "x": 1880,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Recap.dc.html",
+      "title": "1H · Recap",
+      "page": "audience",
+      "x": 2350,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Passport.dc.html",
+      "title": "1I · Taste Passport",
+      "page": "audience",
+      "x": 2820,
+      "y": 964,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CuratorPrep.dc.html",
+      "title": "1J① · CuratorPrep",
+      "page": "curator",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "CuratorQueue.dc.html",
+      "title": "1J⑤ · CuratorQueue",
+      "page": "curator",
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "CuratorNotes.dc.html",
+      "title": "1J④ · CuratorNotes",
+      "page": "curator",
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "DryRun.dc.html",
+      "title": "1J⑨ · Dry run",
+      "page": "curator",
+      "x": 0,
+      "y": 1020,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "OnAir.dc.html",
+      "title": "1J⑦ · On air",
+      "page": "curator",
+      "x": 1520,
+      "y": 1020,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "CuratorShip.dc.html",
+      "title": "1J⑧ · CuratorShip",
+      "page": "curator",
+      "x": 3040,
+      "y": 1020,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "CuratorPhone.dc.html",
+      "title": "1J⑦ · On air, phone",
+      "page": "curator",
+      "x": 0,
+      "y": 2040,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CuratorProfile.dc.html",
+      "title": "1K · CuratorProfile",
+      "page": "curator",
+      "x": 470,
+      "y": 2040,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "audience"
+  }
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Feature Roadmap · Projector</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Hanken+Grotesk:wght@300..800&family=JetBrains+Mono:wght@300..600&family=Source+Serif+4:opsz,wght@8..60,300..600&display=swap">
+<style>
+  :root{--paper:#e7e3da;--card:#f2efe8;--ink:#1a1917;--ink-soft:#57534a;--ink-faint:#8a8477;
+    --line:rgba(0,0,0,.12);--board:#14110b;--board-line:#453a26;--bulb:#f4e4bc;--pink:#a01a86}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Hanken Grotesk',-apple-system,system-ui,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;
+    padding:11px 16px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .bar a{color:var(--ink-soft);text-decoration:none}
+  .bar a:hover{color:var(--pink)}
+  .bar .who{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px}
+  .bar .name{font-family:'Archivo',system-ui,sans-serif;font-stretch:125%;font-weight:700;
+    font-size:14px;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+  .bar .meta,.bar .back{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  main{max-width:720px;margin:0 auto;padding:44px 24px 80px}
+  .doc h1{font-family:'Archivo',system-ui,sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(26px,6vw,38px);letter-spacing:.03em;text-transform:uppercase;
+    margin:0 0 6px;line-height:1.05}
+  .stamp{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:30px}
+  .toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:34px}
+  .toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:28px}
+  .toc li{break-inside:avoid;margin:0 0 5px}
+  .toc a{font-size:13.5px;color:var(--ink-soft);text-decoration:none}
+  .toc a:hover{color:var(--pink)}
+  .doc h2{font-family:'Archivo',system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;margin:46px 0 0;padding-bottom:9px;
+    border-bottom:1px solid var(--line);scroll-margin-top:60px}
+  .doc h3{font-size:17px;font-weight:700;margin:32px 0 0;scroll-margin-top:60px}
+  .doc h4{font-size:14px;font-weight:700;margin:24px 0 0;color:var(--ink-soft)}
+  .doc p{margin:12px 0;max-width:66ch}
+  .doc ul,.doc ol{margin:12px 0;padding-left:20px;max-width:66ch}
+  .doc li{margin:6px 0}
+  /* Task lists. A checklist someone is meant to work through, rather than a
+     bulleted list that happens to start with a bracket. */
+  .doc ul.tasks{list-style:none;padding-left:0}
+  .doc ul.tasks li.task{display:flex;gap:11px;align-items:flex-start;margin:9px 0}
+  .doc ul.tasks .box{flex:none;width:15px;height:15px;margin-top:4px;border:1px solid var(--ink-faint);
+    border-radius:3px;font-size:11px;line-height:14px;text-align:center;color:var(--pink)}
+  .doc ul.tasks li.done .box{border-color:var(--pink)}
+  .doc ul.tasks li.done>span:last-child{opacity:.55;text-decoration:line-through}
+  .doc hr{border:0;border-top:1px solid var(--line);margin:38px 0}
+  .doc blockquote{margin:16px 0;padding:2px 0 2px 16px;border-left:2px solid var(--line);
+    font-family:'Source Serif 4',Georgia,serif;font-size:16px;color:var(--ink-soft);max-width:62ch}
+  .doc code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em;
+    background:rgba(0,0,0,.055);padding:1px 5px;border-radius:3px}
+  .doc pre{background:var(--board);color:#d8cfae;padding:14px 16px;border-radius:8px;overflow-x:auto}
+  .doc pre code{background:none;color:inherit;padding:0;font-size:12.5px;line-height:1.55}
+  .doc a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.28)}
+  .doc a:hover{color:var(--pink);border-color:var(--pink)}
+  .lockline{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+    border:1px solid var(--line);border-radius:999px;padding:5px 11px;display:inline-block;
+    margin:0 0 26px}
+  .doc a.xref{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.84em;
+    background:rgba(160,26,134,.07);border-bottom:1px solid rgba(160,26,134,.35);
+    padding:1px 5px;border-radius:3px}
+  .tw{overflow-x:auto;margin:18px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-faint);font-weight:400;white-space:nowrap}
+  .nav{display:flex;align-items:center;gap:2px;flex:none}
+  .nav a,.nav span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:5px;
+    text-decoration:none;white-space:nowrap;max-width:22ch;overflow:hidden;text-overflow:ellipsis}
+  .nav a{color:var(--ink-soft)}
+  .nav a:hover{background:rgba(0,0,0,.06);color:var(--pink)}
+  .nav span{color:#c2bdb1}
+  /* Bottom LEFT on purpose: the bottom right belongs to the host's badge. */
+  .totop{position:fixed;left:16px;bottom:16px;z-index:20;padding:9px 13px;border-radius:999px;
+    border:1px solid rgba(0,0,0,.18);background:var(--paper);color:var(--ink-soft);
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;cursor:pointer;
+    opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .18s,transform .18s}
+  .totop.on{opacity:1;transform:none;pointer-events:auto}
+  .totop:hover{color:var(--pink);border-color:var(--pink)}
+  @media (max-width:560px){.nav a,.nav span{max-width:7ch}}
+  /* Centred and directly under the document, because both bottom corners are
+     taken: the host's badge on the right, the jump-to-top on the left. */
+  .pager{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+    margin-top:40px;border-top:1px solid var(--line);padding:24px 0 56px}
+  .pager .step{display:block;text-decoration:none;max-width:100%}
+  .pager .lbl{display:block;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .pager .to{display:block;font-family:'Archivo',system-ui,sans-serif;font-stretch:125%;
+    font-weight:800;font-size:clamp(26px,4.4vw,42px);letter-spacing:.03em;text-transform:uppercase;
+    color:var(--ink);line-height:1.05}
+  .pager .step:hover .to,.pager .step:hover .lbl{color:var(--pink)}
+  @media (max-width:620px){.toc ol{columns:1}.bar .meta{display:none}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="./">← Documents</a>
+  <div class="who"><span class="name">Feature Roadmap</span></div>
+  <nav class="nav"><a href="./wireframe-guide.html">‹ Wireframe Guide v2</a><span>›</span></nav>
+  <span class="meta">6 September 2026</span>
+</header>
+<main class="doc">
+<h1>Feature Roadmap</h1>
+<div class="stamp">Approved phases, provisional integrations, and fourteen future experiments.</div>
+
+<nav class="toc"><ol><li><a href="#approved-build-scope-and-phases">Approved build scope and phases</a></li><li><a href="#integration-candidates-not-committed-build-scope">Integration candidates, not committed build scope</a></li><li><a href="#provisional-younify-module-b21-evidence-checked-6-september-">Provisional Younify module B21 · evidence checked 6 September 2026</a></li><li><a href="#roadmap-boundaries">Roadmap boundaries</a></li><li><a href="#first-experiments-use-the-expanded-mvp-foundations">First experiments: use the expanded MVP foundations</a></li><li><a href="#next-experiments-add-targeted-workflow-support">Next experiments: add targeted workflow support</a></li><li><a href="#later-experiments-test-trust-and-access-before-new-commerce">Later experiments: test trust and access before new commerce</a></li><li><a href="#prior-deferrals-that-remain-outside-this-update">Prior deferrals that remain outside this update</a></li><li><a href="#decision-record-for-an-experiment">Decision record for an experiment</a></li></ol></nav>
+<p><strong>6 September 2026 · Approved MVP, integration investigations, and deferred experiments · No delivery dates</strong></p>
+<p>Michael approved the first six retention ideas and the two closing additions for the expanded MVP. <a class="xref" href="./wireframe-guide.html">Projector-Wireframe-Guide-v2.md</a> covers those eight features, mobile Letterboxd file import, and Taste Passport personalisation. This document captures the other fourteen ideas from the brainstorm. The approved MVP inventory below records the user-approved scope. Integration candidates and F01–F14 remain uncommitted; none carries a proven retention benefit.</p>
+<h2 id="approved-build-scope-and-phases">Approved build scope and phases</h2>
+<p><a class="xref" href="./product-spec.html">Projector-Product-Spec.md</a> version 3 is the build source of truth. Use its stable module IDs to prompt an agent. P0 is Klaus&#x27;s foundation under the supplied SOW; P1 is curator authoring/rehearsal; P2 is the paid pilot; P3 completes the expanded retention MVP. The SOW does not include the later clock, payments, or retention builds. Section 09 of the spec records the handoff, and section 03 holds the design placeholders.</p>
+<div class="tw"><table><thead><tr><th>Feature</th><th>Phase/module</th><th>Wireframe IDs</th></tr></thead><tbody><tr><td>Repository, data, guardrails, Google/anonymous identity</td><td>P0, B01–B02; Klaus&#x27;s agreed foundation</td><td>Acceptance screens</td></tr><tr><td>Authoring, clock/harness, rehearsal, promo preparation</td><td>P1, B03–B05/B10a; founder/agents</td><td>1J①/④/⑤/⑧/⑨</td></tr><tr><td>Paid live screening, recap, operations, manual payouts</td><td>P2, B06–B09/B10b; founder/agents</td><td>1G, 1D, 1A/B/C, 1H</td></tr><tr><td>Profiles, Marquee, Passport foundation</td><td>P3, B11</td><td>1E/1F/1I/1K</td></tr><tr><td>Repertory and encores</td><td>P3, B12</td><td>R05</td></tr><tr><td>Curator seasons</td><td>P3, B13</td><td>R01–R02</td></tr><tr><td>Persistent friend groups</td><td>P3, B14</td><td>R03</td></tr><tr><td>Programming ballots</td><td>P3, B15</td><td>R04</td></tr><tr><td>Opt-in regulars notebook</td><td>P3, B16</td><td>R06</td></tr><tr><td>Audience commissioning</td><td>P3, B17</td><td>R07</td></tr><tr><td>Film requests and screening alerts</td><td>P3, B18</td><td>R08</td></tr><tr><td>Curator foyer</td><td>P3, B19</td><td>R09</td></tr><tr><td>Taste training, Letterboxd import, curator ranking</td><td>P3, B20a–c</td><td>R10–R12</td></tr><tr><td>Younify streaming-history browser handoff</td><td>P3 provisional, B21; provider validation before activation</td><td>Proposed Y01–Y04</td></tr></tbody></table></div>
+<p>The React PWA is the audience platform across phases. Approval establishes intended scope, not implementation status or a delivery date. The base expanded MVP does not depend on B21 activation.</p>
+<h2 id="integration-candidates-not-committed-build-scope">Integration candidates, not committed build scope</h2>
+<div class="tw"><table><thead><tr><th>Candidate</th><th>Evidence and next decision</th></tr></thead><tbody><tr><td>Netflix CSV import</td><td>Netflix documents a per-profile viewing-activity download. Validate a fixture, mobile download/upload, title matching, and film-only filtering before approving the adapter.</td></tr><tr><td>Trakt authorisation</td><td>Trakt documents browser OAuth. Test a read of consented history, current API terms and limits, source availability, revocation, and account-level subscription requirements. A Trakt connection does not mean a viewer has connected their streamers.</td></tr></tbody></table></div>
+<h2 id="provisional-younify-module-b21-evidence-checked-6-september-">Provisional Younify module B21 · evidence checked 6 September 2026</h2>
+<p><strong>A documented PWA precedent exists.</strong> Trakt&#x27;s February 2025 announcement describes Trakt Lite as an installable PWA and says Younify tracking continues to supply it with history. The same announcement requires mobile apps for tracking changes. This demonstrates a PWA consuming synchronised data with a separate mobile setup step. It does not establish a browser-only Younify account-linking flow. The team has not tested the current signed-in experience. <a href="https://forums.trakt.tv/t/try-out-trakt-lite-your-new-go-to-for-a-better-faster-and-simpler-experience/47712">Trakt Lite announcement</a></p>
+<p><strong>A web-product lead exists.</strong> Cineverse announced cineSearch on the web in October 2024 with streaming-account connection and a mobile app still planned. Its December 2024 announcement names Younify Connect for viewing-history integration. These announcements justify asking Younify about cineSearch&#x27;s web implementation. They do not establish that cineSearch is a PWA or that its current linking flow stays in a browser. The public cineSearch site remains accessible; no authenticated account connection was tested. <a href="https://s202.q4cdn.com/484194886/files/doc_news/Cineverse-Launches-cineSearch-For-Public-Preview-Revolutionizing-Content-Discovery-2024.pdf">Public preview announcement</a> · <a href="https://s202.q4cdn.com/484194886/files/doc_news/Cineverse-Enhances-Content-Recommendations-via-Younify-Connect-Integration-into-cineSearch-Platform-2024.pdf">Younify integration announcement</a></p>
+<p>Younify&#x27;s public SDK list names iOS, Android, React Native, and .NET MAUI. A React Native SDK does not establish React browser compatibility. Its privacy policy mentions partner websites, but that description does not document browser authentication. Search results for a Younify e-commerce agency concern a different company and provide no evidence about this SDK. <a href="https://www.younify.tv/product/developer-sdk/">Developer SDK</a> · <a href="https://www.younify.tv/privacy/">Privacy policy</a></p>
+<p>Michael approved the provisional CTA → browser linking → verified completion hook → return flow. Before activating B21, obtain a working browser demo and confirm: supported Safari/Chrome and installed-PWA return flows; whether a separate native app is required; profile selection and reauthentication; historical coverage and missing dates by service; consent and source removal; commercial cost and support obligations. Request a named browser implementation, with cineSearch as the concrete lead. No provider contact or account connection has occurred during this documentation work.</p>
+<p><a href="https://help.netflix.com/en/node/101917">Netflix export instructions</a> · <a href="https://docs.trakt.tv/docs/authentication-oauth">Trakt browser authorisation</a></p>
+<h2 id="roadmap-boundaries">Roadmap boundaries</h2>
+<p>The expanded MVP includes seasons, friend groups, programming ballots, repertory duplication, the regulars notebook, audience commissioning, hosted-film alerts, and curator foyers. Use those foundations to test the ideas below with a small programme before adding infrastructure. The order groups experiments by the work they need; it does not promise a calendar.</p>
+<p>Keep guest booking, the shared film clock, quiet viewing, and the curator&#x27;s choice of external community destination. The team should compare repeat attendance and curator effort with the cost of each addition. Small audiences can offer evidence through interviews and observed behaviour; avoid assigning causal lift to a handful of self-selected participants.</p>
+<h2 id="first-experiments-use-the-expanded-mvp-foundations">First experiments: use the expanded MVP foundations</h2>
+<h3 id="f01-the-curator-x27-s-guest-seat">F01 · The curator&#x27;s guest seat</h3>
+<p><strong>Experience.</strong> An attendee submits one Liner Note for an upcoming screening. The curator reviews the text, attribution, source, and timestamp before adding it to the queue. The contributor chooses whether to receive a public credit.</p>
+<p><strong>Retention hypothesis.</strong> An audience member returns to see their contribution, and the curator learns who can contribute useful knowledge.</p>
+<p><strong>First test.</strong> Invite one attendee through the existing pre-screening contribution prompt. The curator adds the approved note by hand. Build a contributor submission/review state only after repeated use.</p>
+<p><strong>Dependencies and limits.</strong> Note editor, contribution prompt, and consent for credit. The curator keeps publishing control. Track contributor return, audience response, and review time. Broad co-curator editing remains a separate decision.</p>
+<h3 id="f02-you-asked-i-found-it">F02 · “You asked, I found it”</h3>
+<p><strong>Experience.</strong> A curator returns to an unanswered question after a screening and adds an answer to the recap. The questioner can receive a notice and reply in the foyer.</p>
+<p><strong>Retention hypothesis.</strong> The attendee has a reason to reopen Projector and sees that the curator values their question.</p>
+<p><strong>First test.</strong> Let the curator mark a question <strong>I&#x27;ll follow up</strong>, then post one answer with an optional related screening link. Avoid imposing a response-time promise.</p>
+<p><strong>Dependencies and limits.</strong> Recap questions and notification preferences. Track follow-up views, replies, next attendance, and time spent answering.</p>
+<h3 id="f03-a-film-i-changed-my-mind-about">F03 · A film I changed my mind about</h3>
+<p><strong>Experience.</strong> A curator programmes a pair of films, or a film and a later rewatch, around a change in their own judgment. Attendees discuss how their responses changed between nights.</p>
+<p><strong>Retention hypothesis.</strong> The curator&#x27;s personal account gives viewers a reason to complete the pair.</p>
+<p><strong>First test.</strong> Use SeasonStudio and a shared discussion prompt. No custom feature required until curators request a reusable format.</p>
+<p><strong>Dependencies and limits.</strong> Seasons, recaps, foyer. Track attendance across both nights and preparation effort.</p>
+<h3 id="f04-curator-relay">F04 · Curator relay</h3>
+<p><strong>Experience.</strong> At the end of a programme, one curator introduces another curator&#x27;s next screening through a short personal recommendation. The recipient sees who made the introduction.</p>
+<p><strong>Retention hypothesis.</strong> Viewers try a second curator because a trusted host recommended them; curators gain audience from peers.</p>
+<p><strong>First test.</strong> Add a curator-selected recommendation to a recap with an attributed link. Preserve the host&#x27;s own next-screening booking option.</p>
+<p><strong>Dependencies and limits.</strong> Curator profiles and attribution. Both curators agree to the introduction. Track cross-curator booking, attendance, and subsequent returns; referral compensation needs a separate proposal.</p>
+<h3 id="f05-first-timers-x27-club">F05 · First-timers&#x27; club</h3>
+<p><strong>Experience.</strong> A curator programmes films many viewers feel they should have seen, with beginner-friendly introductions and explicit spoiler expectations. Viewers can arrive without prior knowledge.</p>
+<p><strong>Retention hypothesis.</strong> Beginners return to a group where they can ask basic questions.</p>
+<p><strong>First test.</strong> Run a named three-film season with a welcoming pre-show and spoiler guidance. Use optional self-identification as a first-time viewer.</p>
+<p><strong>Dependencies and limits.</strong> Seasons and foyer moderation. Track first-to-second attendance and ask viewers whether the conversation felt accessible.</p>
+<h3 id="f06-bring-your-sceptic">F06 · Bring your sceptic</h3>
+<p><strong>Experience.</strong> A curator programmes an introduction to a genre or style for viewers who tend to avoid it. Regulars invite a friend through the existing group flow.</p>
+<p><strong>Retention hypothesis.</strong> The invitation gives friends a shared reason to attend and an occasion to compare reactions.</p>
+<p><strong>First test.</strong> Run “Horror for people who avoid horror” or another curator-chosen programme. Ask both viewers about the night without requiring them to change their opinions.</p>
+<p><strong>Dependencies and limits.</strong> Group invitations, film access information, and relevant content information. Track invited-friend attendance and whether the pair books again.</p>
+<h3 id="f07-the-room-x27-s-alternate-ending">F07 · The room&#x27;s alternate ending</h3>
+<p><strong>Experience.</strong> After the credits, the curator asks an interpretive question. Attendees choose an answer and revisit the discussion at the next screening.</p>
+<p><strong>Retention hypothesis.</strong> A continuing conversation helps connect separate nights.</p>
+<p><strong>First test.</strong> Use a foyer prompt with a small poll. The title refers to alternative interpretations, not changing or distributing film footage.</p>
+<p><strong>Dependencies and limits.</strong> Post-film prompts and seasons. Keep interpretation separate from trivia scoring. Measure next attendance and the curator&#x27;s effort to sustain the discussion.</p>
+<h3 id="f08-an-audience-made-season-zine">F08 · An audience-made season zine</h3>
+<p><strong>Experience.</strong> At the end of a season, the curator collects selected attendee reflections and their own notes into a page participants can keep or share.</p>
+<p><strong>Retention hypothesis.</strong> Contributors value their shared record and may join another season.</p>
+<p><strong>First test.</strong> Assemble one page by hand from submissions people agreed to publish. Give contributors a preview and a choice of attribution.</p>
+<p><strong>Dependencies and limits.</strong> Seasons, saved notes, contribution consent. Start with text and authorised images. Track contributor participation, sharing, and return for a later programme.</p>
+<h2 id="next-experiments-add-targeted-workflow-support">Next experiments: add targeted workflow support</h2>
+<h3 id="f09-the-same-film-two-minds">F09 · The same film, two minds</h3>
+<p><strong>Experience.</strong> Two curators host separate screenings of the same film through different perspectives, such as cinematography and costume design. Attendees can reserve either or both.</p>
+<p><strong>Retention hypothesis.</strong> Viewers return to a familiar film for a different host&#x27;s perspective, and curators reach each other&#x27;s audiences.</p>
+<p><strong>First test.</strong> Link two existing sessions from a shared programme page. Each curator retains their own room and checkout attribution.</p>
+<p><strong>Dependencies and limits.</strong> Cross-curator programme links. A joint paid bundle or shared hosting permissions requires further design; the MVP season model has one curator. Track overlap between audiences and second-curator returns.</p>
+<h3 id="f10-missed-night-rescue">F10 · Missed-night rescue</h3>
+<p><strong>Experience.</strong> Someone who missed a reserved screening can transfer its value to an eligible encore or another session from the same curator.</p>
+<p><strong>Retention hypothesis.</strong> A missed night becomes an opportunity for the attendee to make another plan.</p>
+<p><strong>First test.</strong> Offer a limited manual transfer to a small group of no-shows, with curator agreement and visible eligibility rules.</p>
+<p><strong>Dependencies and limits.</strong> Reservation, payment, refund, and capacity handling. Define eligibility, expiry, price differences, and abuse prevention before offering a button. Track replacement attendance and curator net proceeds; do not equate issuing credit with a retained attendee.</p>
+<h3 id="f11-curator-office-hours">F11 · Curator office hours</h3>
+<p><strong>Experience.</strong> Members join a short monthly conversation about the films they have watched. A pair of curators can share the hosting work.</p>
+<p><strong>Retention hypothesis.</strong> Members maintain a relationship between film nights and discover another curator.</p>
+<p><strong>First test.</strong> Schedule one text discussion in a foyer, or link to an agreed external live session. Avoid building native audio/video for the initial test.</p>
+<p><strong>Dependencies and limits.</strong> Foyer, scheduling, moderation, and guest-host permissions if needed. Track participation followed by screening attendance, plus the hosts&#x27; preparation and moderation time.</p>
+<h3 id="f12-programme-a-night-for-us">F12 · Programme a night for us</h3>
+<p><strong>Experience.</strong> A friend group requests a programme for a birthday, long-distance gathering, or another occasion. The curator can accept, ask for more detail, or decline, and choose a public or private format with the group.</p>
+<p><strong>Retention hypothesis.</strong> Groups return to a curator who hosted a meaningful occasion; curators gain a new programming opportunity.</p>
+<p><strong>First test.</strong> Add a request form and coordinate one event by hand. This differs from MVP commissioning: a named group initiates a custom brief, while the MVP curator proposes a programme to the wider audience.</p>
+<p><strong>Dependencies and limits.</strong> Group identity, availability, pricing agreement, and private-room access if promised. Film access remains each attendee&#x27;s responsibility. Track repeat group bookings and the curator&#x27;s time per engagement.</p>
+<h2 id="later-experiments-test-trust-and-access-before-new-commerce">Later experiments: test trust and access before new commerce</h2>
+<h3 id="f13-secret-screening">F13 · Secret screening</h3>
+<p><strong>Experience.</strong> An audience reserves a curator-led mystery programme with agreed clues, runtime, and access requirements. The curator reveals the film with time for attendees to obtain it.</p>
+<p><strong>Retention hypothesis.</strong> Viewers return for the pleasure of trusting a particular curator&#x27;s judgment.</p>
+<p><strong>First test.</strong> Use a small invited group and reveal the title before checkout. Test a paid mystery only after defining reveal timing, access failure handling, and cancellation terms.</p>
+<p><strong>Dependencies and limits.</strong> Region and service availability checks. Because Projector does not supply the film, an unrevealed title can prevent a viewer from confirming access. Do not promise that a service subscription alone guarantees access. Track repeat bookings and access-related drop-off.</p>
+<h3 id="f14-a-trust-me-seat">F14 · A “trust me” seat</h3>
+<p><strong>Experience.</strong> A viewer reserves a recurring time with a curator before the curator announces the film. The date and host anchor the plan.</p>
+<p><strong>Retention hypothesis.</strong> Viewers commit to the curator&#x27;s taste across several programmes, giving the host evidence of demand beyond a single title.</p>
+<p><strong>First test.</strong> Collect interest in one monthly slot without charging, then invite participants to book after the title reveal. Compare attendance with announced-title events.</p>
+<p><strong>Dependencies and limits.</strong> Recurring schedules, access checks, and clear reveal/cancellation rules. Automatic renewal, subscriptions, and stored payment mandates require a separate commerce design. Keep this separate from the MVP season purchase of known films and dates.</p>
+<h2 id="prior-deferrals-that-remain-outside-this-update">Prior deferrals that remain outside this update</h2>
+<p>The product spec retains research-agent work, research-to-note workflow, expert consultation, automatic timestamp discovery, quote check, and telestrator tooling as deferred. The rewritten spec stages the basic recap in P2 and the profile, Marquee, and complete Passport in P3. Section 02 defines phases and section 10 defines future scope. The team must estimate a calendar after the foundation handoff; the spec does not reuse old sprint dates.</p>
+<p>Letterboxd API-based continuous sync remains a dependency-led possibility, not a scheduled feature. The v2 guide specifies user-uploaded files and editable taste preferences. Letterboxd&#x27;s current API access policy excludes recommendation projects; do not place an API connection on a committed roadmap without an approved path. <a href="https://letterboxd.com/api-beta/">Letterboxd API policy</a>, checked 6 September 2026.</p>
+<h2 id="decision-record-for-an-experiment">Decision record for an experiment</h2>
+<p>Before running an experiment, name an owner, participating curators, audience cohort, and the behaviour to observe. Record curator preparation time, first and repeat attendance, participant feedback, and any payment/access problems. After the test, choose one disposition: repeat by hand, build a small supporting flow, redesign, or stop. Add delivery dates only when the team agrees scope and capacity.</p>
+<nav class="pager"><a class="step" href="./wireframe-guide.html"><span class="lbl">Previous</span><span class="to">← Wireframe Guide v2</span></a></nav>
+</main>
+<button class="totop" id="totop" type="button">↑ Top</button>
+<script>
+(function(){
+  // Not named `top`: that is window.top in a browser, so the assignment does not
+  // take and the whole block fails silently.
+  var upBtn=document.getElementById('totop');
+  if(!upBtn){return}
+  var toggle=function(){upBtn.classList.toggle('on',window.scrollY>360)};
+  window.addEventListener('scroll',toggle,{passive:true});
+  upBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  toggle();
+})();
+</script>
+</body>
+</html>
