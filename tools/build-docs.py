@@ -49,8 +49,8 @@ GATED: set[str] = set()
 DOCS = [
     ("product-spec", "Product Spec", VAULT / "Projector-Product-Spec.md",
      "Version 3: 21 build modules, foundation handoff, design contract, and provisional Younify flow."),
-    ("wireframe-guide", "Wireframe Guide v2", VAULT / "Projector-Wireframe-Guide-v2.md",
-     "Screen requirements, retention flows, and provisional Younify handoff."),
+    ("wireframe-guide", "Screen Guide", VAULT / "Projector-Wireframe-Guide-v2.md",
+     "Written screen requirements, including newer retention features and the provisional Younify flow."),
     ("feature-roadmap", "Feature Roadmap", VAULT / "Projector-Future-Roadmap.md",
      "Approved phases, provisional integrations, and fourteen future experiments."),
 ]
@@ -361,6 +361,10 @@ def build():
 
         lock = ('<div class="lockline">Shared by link. Not listed publicly.</div>'
                 if slug in GATED else "")
+        companion = ('<p><strong>Written requirements · Wireframe Guide v2.</strong> Read this guide for screen behaviour and newer features. '
+                     '<a href="../wireframes/">View the visual wireframes</a> for the earlier layouts. '
+                     'We have not yet drawn all the retention, Taste Passport, and provisional Younify additions described here.</p>'
+                     if slug == "wireframe-guide" else "")
         page = f"""<header class="bar">
   <a class="back" href="{'../' if slug in GATED else './'}">← Documents</a>
   <div class="who"><span class="name">{H.escape(title)}</span></div>
@@ -371,6 +375,7 @@ def build():
 <h1>{H.escape(title)}</h1>
 <div class="stamp">{H.escape(blurb)}</div>
 {lock}
+{companion}
 {toc_html}
 {body}
 <nav class="pager">{"".join(pager)}</nav>
@@ -454,7 +459,7 @@ def build():
   <p class="lede">A curator picks a film, sets a showtime, and hosts a screening. You watch on your
   own television, on whatever service you already pay for, and their Liner Notes arrive on your phone
   in time with the film.</p>
-  <p class="lede"><a href="../wireframes/">The wireframes are here</a>, the original artboards; the v2 guide describes additional proposed screens.</p>
+  <p class="lede"><a href="./wireframe-guide.html">Read the screen guide</a> for written requirements, or <a href="../wireframes/">browse the visual wireframes</a> for earlier layouts. We have not yet drawn all the newer features in the guide.</p>
   {''.join(groups)}
 </main>
 <footer>

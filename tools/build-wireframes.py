@@ -406,10 +406,12 @@ def index_page(canvas, pages):
 <main>
   <div class="board">
     <div class="bulbs"></div>
-    <h1>Wireframes</h1>
-    <div class="sub">Projector · v3 · September 2026</div>
+    <h1>Visual wireframes</h1>
+    <div class="sub">Earlier layouts · September 2026</div>
     <div class="bulbs"></div>
   </div>
+
+  <p class="lede"><strong>These are the screen mockups.</strong> For how each screen should work, <a href="../docs/wireframe-guide.html">read the screen guide</a>. We have not yet drawn all the newer retention, Taste Passport, and provisional Younify additions in that guide.</p>
 
   <p class="lede">Redrawn in September 2026 in the movie-palace theme. The audience side comes first, in the order a night happens, then the curator tools. The research agent and AI timestamping (1J2 and 1J3) come after the raise and are not drawn. Open a board on its own page. The toggle in the bar swaps between fitting the board to your screen and its full size.</p>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Wireframe Guide v2 · Projector</title>
+<title>Screen Guide · Projector</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Hanken+Grotesk:wght@300..800&family=JetBrains+Mono:wght@300..600&family=Source+Serif+4:opsz,wght@8..60,300..600&display=swap">
 <style>
   :root{--paper:#e7e3da;--card:#f2efe8;--ink:#1a1917;--ink-soft:#57534a;--ink-faint:#8a8477;
@@ -108,14 +108,15 @@
 <body>
 <header class="bar">
   <a class="back" href="./">← Documents</a>
-  <div class="who"><span class="name">Wireframe Guide v2</span></div>
+  <div class="who"><span class="name">Screen Guide</span></div>
   <nav class="nav"><a href="./product-spec.html">‹ Product Spec</a><a href="./feature-roadmap.html">Feature Roadmap ›</a></nav>
   <span class="meta">6 September 2026</span>
 </header>
 <main class="doc">
-<h1>Wireframe Guide v2</h1>
-<div class="stamp">Screen requirements, retention flows, and provisional Younify handoff.</div>
+<h1>Screen Guide</h1>
+<div class="stamp">Written screen requirements, including newer retention features and the provisional Younify flow.</div>
 
+<p><strong>Written requirements · Wireframe Guide v2.</strong> Read this guide for screen behaviour and newer features. <a href="../wireframes/">View the visual wireframes</a> for the earlier layouts. We have not yet drawn all the retention, Taste Passport, and provisional Younify additions described here.</p>
 <nav class="toc"><ol><li><a href="#platform-requirement">Platform requirement</a></li><li><a href="#scope-and-reading-order">Scope and reading order</a></li><li><a href="#new-board-index">New board index</a></li><li><a href="#main-the-cover">Main · the cover</a></li><li><a href="#curatorprep-1j-and-1j">CuratorPrep · 1J① and 1J②</a></li><li><a href="#curatornotes-1j-and-1j">CuratorNotes · 1J③ and 1J④</a></li><li><a href="#curatorqueue-1j-and-1j">CuratorQueue · 1J⑤ and 1J⑥</a></li><li><a href="#curatorlive-1j-and-1j">CuratorLive · 1J⑦ and 1J⑨</a></li><li><a href="#curatorphone-1j-and-1j-on-a-phone">CuratorPhone · 1J⑥ and 1J⑦ on a phone</a></li><li><a href="#curatorship-1j">CuratorShip · 1J⑧</a></li><li><a href="#curatorprofile-1k">CuratorProfile · 1K</a></li><li><a href="#discover-1e-1f-1g">Discover · 1E, 1F, 1G</a></li><li><a href="#thenight-1d-to-1d">TheNight · 1D① to 1D⑨</a></li><li><a href="#theroom-1a-1b-1c">TheRoom · 1A, 1B, 1C</a></li><li><a href="#lightsup-1d">LightsUp · 1D⑩</a></li><li><a href="#aftertheshow-1h-and-1i">AfterTheShow · 1H and 1I</a></li><li><a href="#seasonstudio-r01a-b">SeasonStudio · R01a–b</a></li><li><a href="#seasondetail-r02a-c">SeasonDetail · R02a–c</a></li><li><a href="#watchtogether-r03a-c">WatchTogether · R03a–c</a></li><li><a href="#programmevote-r04a-c">ProgrammeVote · R04a–c</a></li><li><a href="#repertoryshelf-r05a-c">RepertoryShelf · R05a–c</a></li><li><a href="#regularsnotebook-r06a-c">RegularsNotebook · R06a–c</a></li><li><a href="#commissionprogramme-r07a-c">CommissionProgramme · R07a–c</a></li><li><a href="#passportrequests-r08a-c">PassportRequests · R08a–c</a></li><li><a href="#curatorfoyer-r09a-c">CuratorFoyer · R09a–c</a></li><li><a href="#product-decision">Product decision</a></li><li><a href="#tastesetup-r10a-d">TasteSetup · R10a–d</a></li><li><a href="#letterboxdimport-r11a-d">LetterboxdImport · R11a–d</a></li><li><a href="#marqueetaste-r12a-b">MarqueeTaste · R12a–b</a></li><li><a href="#prompts-identity-and-notifications">Prompts, identity, and notifications</a></li><li><a href="#minimum-shared-records">Minimum shared records</a></li><li><a href="#review-checks-before-the-team-calls-these-flows-complete">Review checks before the team calls these flows complete</a></li><li><a href="#beta-measurement">Beta measurement</a></li><li><a href="#companion-documents">Companion documents</a></li><li><a href="#provisional-streaming-connection-boards-y01-y04">Provisional streaming connection boards · Y01–Y04</a></li></ol></nav>
 <p><strong>6 September 2026 · Expanded MVP definition · Wireframe requirements, not a record of shipped features</strong></p>
 <p>This version retains the original screening journey and adds eight retention features plus Taste Passport personalisation. The original guide remains intact in <code>Projector-Wireframe-Guide.md</code>. The designer can use this document to extend the boards; the engineer can use the behaviours and review checks to scope the build. Product spec version 3 now maps these requirements to stable build modules B01–B21 and governs phase placement. This document update does not change HTML wireframes, application code, the investor deck, or the delivery calendar.</p>
